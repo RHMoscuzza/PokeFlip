@@ -5,14 +5,14 @@ import './App.css';
 function App(){
 	const [data, setData] = useState([]);
 	const [isToggled, setToggle] = useState(false);
-	const [toggleID, setToggleID] = useState([])
-	
+	const [toggleID, setToggleID] = useState()
+
 	useEffect(() => {
 		const baseUrl = `https://pokeapi.co/api/v2/pokemon?limit=151`;
-		
+
 		async function fetchData() {
-			const result = await axios 
-			.get(baseUrl) 
+			const result = await axios
+			.get(baseUrl)
 			.then((res) => {
 				return res.data.results
 			})
@@ -23,20 +23,15 @@ function App(){
 				setData(results.map((res) => res.data))
 			})
 		}
-		
+
 		fetchData();
-		
+
 	}, []);
 
-	// const toggleTrueFalse = (index) => {
-	// 	// console.log(data.name)
-	// 	// if(`button.`+data.name == index.target) {
-	// 		console.log(index.target)
-			
-	// 	// }
+	const toggleTrueFalse = (index) => {
+		setToggle(!isToggled)
+	}
 
-	// }
-	
 	return (
 		<div>
 			<header>
@@ -45,10 +40,10 @@ function App(){
 			<ul>
 				{data.map((item, index) => (
 					<li key={item.name} id={index}>
-						
+
 						<h5 className="pokeId" >{item.id}</h5>
 						<h3 className="pokeName">{item.name.replace('-f', ' ♀').replace('-m', ' ♂')}</h3>
-						<> {!isToggled ? 
+						<> {!isToggled ?
 							<div className="flipCard frontCard" >
 								<img src={item.sprites.front_default} alt=""/>
 							</div> :
@@ -65,18 +60,12 @@ function App(){
 								<p>Base Exp: {item.base_experience}</p>
 							</div>
 						}</>
-						<button className={item.name} onClick={(e) => {
-						
-								setToggle(!isToggled);
-						
-						}}>{!isToggled ? `More Stats` : `Less Stats`}</button>
+						<button className='flipButton' onClick={toggleTrueFalse.bind(this, index)}>{!isToggled ? `More Stats` : `Less Stats`}</button>
 					</li>
 				))}
-				
 			</ul>
 		</div>
 	);
 }
-		
+
 export default App;
-		
