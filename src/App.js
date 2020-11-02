@@ -28,14 +28,14 @@ function App(){
 		
 	}, []);
 
-	const toggleTrueFalse = (index) => {
-		// console.log(data.name)
-		// if(`button.`+data.name == index.target) {
-			console.log(index.target)
+	// const toggleTrueFalse = (index) => {
+	// 	// console.log(data.name)
+	// 	// if(`button.`+data.name == index.target) {
+	// 		console.log(index.target)
 			
-		// }
+	// 	// }
 
-	}
+	// }
 	
 	return (
 		<div>
@@ -66,14 +66,9 @@ function App(){
 							</div>
 						}</>
 						<button className={item.name} onClick={(e) => {
-							if(item.id === index + 1) {
-								// setToggleID(item.id);
-								// console.log(item.id)
-								console.log(item.id, index + 1)
+						
 								setToggle(!isToggled);
-							} else {
-								console.log('nope')
-							}
+						
 						}}>{!isToggled ? `More Stats` : `Less Stats`}</button>
 					</li>
 				))}
