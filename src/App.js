@@ -5,7 +5,6 @@ import './App.css';
 function App(){
 	const [data, setData] = useState([]);
 	const [isToggled, setIsToggle] = useState({});
-	const [toggleID, setToggleID] = useState()
 
 	useEffect(() => {
 		const baseUrl = `https://pokeapi.co/api/v2/pokemon?limit=151`;
@@ -79,9 +78,9 @@ function App(){
 						) : (
 							<div className="flipCard backCard" >
 								<p key={index} className="pokeType">Type:&nbsp;{
-									item.types.map((singleType, i) => {
-										return (<span key={i} >{singleType.type.name}&nbsp;</span>)
-									})
+									item.types.map((singleType) => (
+										<span key={singleType.type.name}>{singleType.type.name}&nbsp;</span>
+									))
 								}
 								</p>
 								<p>Height: {(item.height / 10).toFixed(2)}m</p>
