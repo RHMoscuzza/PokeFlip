@@ -55,7 +55,13 @@ function App(){
 							<div className="flipCard backCard" >
 								<p key={index} className="pokeType">Type:&nbsp;{
 									item.types.map((singleType, i) => (
-										<span key={singleType.type.name}>{singleType.type.name}&nbsp;</span>
+										<span key={singleType.type.name} style={
+											singleType.type.name === 'grass' ? {color: 'green'} : {color: ''} &&
+											singleType.type.name === 'fire' ? {color: 'red'} : {color: ''} &&
+											singleType.type.name === 'water' ? {color: 'blue'} : {color: ''} &&
+											singleType.type.name === 'ground' ? {color: 'brown'} : {color: ''}  &&
+											singleType.type.name === 'poison' ? {color: 'purple'} : {color: ''}  
+										}>{singleType.type.name}&nbsp;</span>
 									))
 								}
 								</p>
