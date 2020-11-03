@@ -16,10 +16,10 @@ function App(){
 				return res.data.results
 			})
 			.then((results) => {
-				return Promise.all(results.map((res) => axios.get(res.url)))
+				return Promise.all(results.map(({url}) => axios.get(url)))
 			})
 			.then((results) => {
-				return results.map((res) => res.data)
+				return results.map(({data}) => data)
 			})
 
 			setData(result);
