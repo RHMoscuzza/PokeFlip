@@ -11,18 +11,18 @@ function App(){
 
 		const fetchData = async () => {
 			const result = await axios
-			.get(baseUrl)
-			.then((res) => {
-				return res.data.results
-			})
-			.then((results) => {
-				return Promise.all(results.map((res) => {
-					return axios.get(res.url);
-				}))
-			})
-			.then((results) => {
-				return results.map((res) => res.data)
-			})
+				.get(baseUrl)
+				.then((res) => {
+					return res.data.results
+				})
+				.then((results) => {
+					return Promise.all(results.map((res) => {
+						return axios.get(res.url);
+					}))
+				})
+				.then((results) => {
+					return results.map((res) => res.data)
+				})
 			setData(result);
 		}
 
