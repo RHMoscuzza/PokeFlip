@@ -58,6 +58,9 @@ function App(){
 			// will result in undefined (falsey value)
 			// as a result we are able to store the individual state of each tile
 			setIsToggle({ ...isToggled, [key]: !isToggled[key] })
+
+			// the other way to maintain state without an object is to use checkboxes
+			// this way you you can use pure css to fix that issue
 		}
 	}
 
