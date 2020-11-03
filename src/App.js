@@ -4,32 +4,36 @@ import './App.css';
 
 function App(){
 	const [data, setData] = useState([]);
-	const [isToggled, setToggle] = useState(false);
-	const [toggleID, setToggleID] = useState()
+	const [isToggled, setIsToggled] = useState({});
 
 	useEffect(() => {
 		const baseUrl = `https://pokeapi.co/api/v2/pokemon?limit=151`;
 
-		async function fetchData() {
+		const fetchData = async () => {
 			const result = await axios
 			.get(baseUrl)
 			.then((res) => {
 				return res.data.results
 			})
 			.then((results) => {
-				return Promise.all(results.map((res) => axios.get(res.url)))
+				return Promise.all(results.map((res) => {
+					return axios.get(res.url);
+				}))
 			})
 			.then((results) => {
-				setData(results.map((res) => res.data))
+				return results.map((res) => res.data)
 			})
+			setData(result);
 		}
 
 		fetchData();
 
 	}, []);
 
-	const toggleTrueFalse = (index) => {
-		setToggle(!isToggled)
+	const toggleTrueFalse = (key) => {
+		return (e) => {
+			setIsToggled({...isToggled, [key]: !isToggled[key]})
+		}
 	}
 
 	return (
@@ -38,29 +42,30 @@ function App(){
 				<h1>PokeFlip</h1>
 			</header>
 			<ul>
-				{data.map((item, index) => (
+				{data && data.map((item, index) => (
 					<li key={item.name} id={index}>
 
 						<h5 className="pokeId" >{item.id}</h5>
-						<h3 className="pokeName">{item.name.replace('-f', ' ♀').replace('-m', ' ♂')}</h3>
-						<> {!isToggled ?
+						<h3 className="pokeName">{item.name.replace('-f', String.fromCharCode(0x00002640)).replace('-m', String.fromCharCode(0x00002642))}</h3>
+						{!isToggled[item.name] ? (
 							<div className="flipCard frontCard" >
 								<img src={item.sprites.front_default} alt=""/>
-							</div> :
+							</div>
+							) :	(
 							<div className="flipCard backCard" >
 								<p key={index} className="pokeType">Type:&nbsp;{
-									item.types.map((singleType, i) => {
-										return (<span key={i} >{singleType.type.name}&nbsp;</span>)
-									})
+									item.types.map((singleType, i) => (
+										<span key={singleType.type.name}>{singleType.type.name}&nbsp;</span>
+									))
 								}
 								</p>
-								<p>Height: {(item.height/10).toFixed(2)}m</p>
-							<p>Weight: {item.weight/10}kg</p>
+								<p>Height: {(item.height / 10).toFixed(2)}m</p>
+							<p>Weight: {item.weight / 10}kg</p>
 								<p>Ability: {item.abilities[0].ability.name}</p>
 								<p>Base Exp: {item.base_experience}</p>
-							</div>
-						}</>
-						<button className='flipButton' onClick={toggleTrueFalse.bind(this, index)}>{!isToggled ? `More Stats` : `Less Stats`}</button>
+							</div>)
+						}
+						<button className='flipButton' onClick={toggleTrueFalse(item.name)}>{!isToggled[item.name] ? `More Stats` : `Less Stats`}</button>
 					</li>
 				))}
 			</ul>
