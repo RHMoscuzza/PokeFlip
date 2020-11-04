@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import './App.css';
 
 function App(){
@@ -36,6 +37,21 @@ function App(){
 		}
 	}
 
+	// const TypeColor = styled.span`
+	// 	switch(colorType) {
+	// 		case 'fire':
+	// 			type: 'fire',
+	// 			color: '#ca2e16'
+	// 			break;
+	// 		case 'water':
+	// 			type: 'water',
+	// 			color: '#208ed5'
+	// 			break;
+			
+	// 	}
+	// `;
+
+
 	return (
 		<div>
 			<header>
@@ -56,11 +72,24 @@ function App(){
 								<p key={index} className="pokeType">Type:&nbsp;{
 									item.types.map((singleType, i) => (
 										<span key={singleType.type.name} style={
-											singleType.type.name === 'grass' ? {color: 'green'} : {color: ''} &&
-											singleType.type.name === 'fire' ? {color: 'red'} : {color: ''} &&
-											singleType.type.name === 'water' ? {color: 'blue'} : {color: ''} &&
-											singleType.type.name === 'ground' ? {color: 'brown'} : {color: ''}  &&
-											singleType.type.name === 'poison' ? {color: 'purple'} : {color: ''}  
+											singleType.type.name === 'grass' ? {color: '#2aa252'} : {color: ''} &&
+											singleType.type.name === 'fire' ? {color: '#ca2e16'} : {color: ''} &&
+											singleType.type.name === 'water' ? {color: '#2083D5'} : {color: ''} &&
+											singleType.type.name === 'ground' ? {color: '#815E5B'} : {color: ''}  &&
+											singleType.type.name === 'poison' ? {color: '#996f9b'} : {color: ''}  &&
+											singleType.type.name === 'bug' ? {color: '#98a040'} : {color: ''} &&
+											singleType.type.name === 'flying' ? {color: '#7B5D28'} : {color: ''} &&
+											singleType.type.name === 'electric' ? {color: '#C1BA33'} : {color: ''} &&
+											singleType.type.name === 'psychic' ? {color: '#5a52a3'} : {color: ''} &&
+											singleType.type.name === 'rock' ? {color: '#364345'} : {color: ''} &&
+											singleType.type.name === 'ghost' ? {color: '#1B1F22'} : {color: ''} &&
+											singleType.type.name === 'dragon' ? {color: '#c95d63'} : {color: ''} &&
+											singleType.type.name === 'dark' ? {color: '#0b1004'} : {color: ''} &&
+											singleType.type.name === 'steel' ? {color: '#393e41'} : {color: ''} &&
+											singleType.type.name === 'fairy' ? {color: '#D9595F'} : {color: ''} &&
+											singleType.type.name === 'fighting' ? {color: '#4E5155'} : {color: ''} &&
+											singleType.type.name === 'ice' ? {color: '#467C9B'} : {color: ''}
+											
 										}>{singleType.type.name}&nbsp;</span>
 									))
 								}
