@@ -13,6 +13,7 @@ p {
     margin: 0;
     line-height: 2;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 button {
@@ -33,6 +34,12 @@ button {
     flex-wrap: wrap;
     list-style: none;
     justify-content: space-around;
+    perspective: 10000px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
 }
 
 .listItemCard {
@@ -48,7 +55,6 @@ button {
     position: relative;
     margin: 1%;
     background-color: white;
-    perspective: 1000px;
 }
 
 .cardFlipWrapper {

@@ -38,7 +38,7 @@ function App(){
 			<ul className="cardWrapper">
 			{data && data.map((item, index) => (
 				<li key={item.name} id={index} className="listItemCard">
-				
+				<div className="container">
 					<h5 className="pokeId" >{item.id}</h5>
 					<h3 className="pokeName">{item.name.replace('-f', String.fromCharCode(0x00002640)).replace('-m', String.fromCharCode(0x00002642))}</h3>
 					<div className="cardFlipWrapper">
@@ -76,6 +76,7 @@ function App(){
 							<p>Base Exp: {item.base_experience}</p>
 						</div>
 					</div>
+				</div>
 					
 				</li>
 			))}
