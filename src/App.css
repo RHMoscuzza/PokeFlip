@@ -36,6 +36,8 @@ button {
     justify-content: space-around;
     perspective: 10000px;
     animation: fadeIn .5s cubic-bezier(0.4, 0, 1, 0.4) 1;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -112,4 +114,16 @@ button {
 
 .pokeType {
     display: flex;
+}
+
+@media screen and (max-width: 1300px) {
+    h1 {
+        font-size: 40px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    .flipCard {
+        font-size: 14px;
+    }
 }
