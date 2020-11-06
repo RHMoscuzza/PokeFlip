@@ -32,8 +32,8 @@ function App(){
 	return (
 		<div>
 			<header>
-				<h1>PokeFlip</h1>
-				<h3>Hover over a card for more Pokemon stats</h3>
+	<h1>Pok{String.fromCharCode(0x000000E9)}Flip</h1>
+				<h3>Hover over a card for more Pok{String.fromCharCode(0x000000E9)}mon stats</h3>
 			</header>
 			<ul className="cardWrapper">
 			{data && data.map((item, index) => (
