@@ -114,6 +114,8 @@ button {
 
 .pokeType {
     display: flex;
+    height: auto;
+    margin-bottom: 2px;
 }
 
 @media screen and (max-width: 1300px) {
@@ -125,5 +127,12 @@ button {
     }
     .flipCard {
         font-size: 14px;
+        height: 100%;
+    }
+    .listItemCard {
+        height: 350px;
+    }
+    .cardFlipWrapper {
+        height: 350px;
     }
 }
